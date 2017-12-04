@@ -57,3 +57,7 @@ Despite the optimization of MuTect2 described above, important variants may stil
 In fact, MuTect2 not only filters out V600E but also a variant in the neighboring codon. The explanation for both variants being filtered is indicated as `clustered_events` and `multi_event_alt_allele_in_normal` in the VCF file.
 
 Simply disabling these filters leads to an explosion in false positive calls. Instead, we have found that using an additional variant caller besides MuTect2 may rescue erroneously filtered variants. More precisely, we run VarScan2 and check if any *high confidence* variants were also called (but subsequently filtered) by MuTect2. If so, we keep these in a separate file for manual inspection. In the particular example above, both BRAF variants are rescued with no extra false positives added.
+
+[Added by erubin@bgu.ac.il, Dec 4th 2017]:
+
+Current version of GATK4 does not support the --max_alt_alleles_in_normal_count and --max_alt_allele_in_normal_fraction options
